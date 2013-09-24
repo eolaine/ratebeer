@@ -1,0 +1,2 @@
+irb(main):007:1> b =  Brewery.new(:name => "Punk IPA", :year => 2007, :style => "IPA"
+irb(main):008:2> b.save

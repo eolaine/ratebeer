@@ -12,7 +12,15 @@
 
 <p>
   <b>Brewery:</b>
-  <%= @beer.brewery_id %>
+  <%= @beer.brewery.name %>
+</p>
+
+<p>
+	<% if @beer.ratings.empty? %>
+		The beer has not yet been rated!
+	<% else %>
+		The beer has <%=pluralize(@beer.ratings.count, 'rating')%>, average <%=@beer.average_rating%>.
+	<% end %>
 </p>
 
 
