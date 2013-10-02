@@ -22,4 +22,13 @@ class RatingsController < ApplicationController
 		rating.delete
 		redirect_to ratings_path
 	end
+	
+	def create
+		Rating.create params[:rating]
+
+		# talletetaan tehty reittaus sessioon 
+		session[:last_rating] = "#{Beer.find(params[:rating][:beer_id])} #{params[:rating][:score]} points"
+
+		redirect_to ratings_path
+	end
 end
