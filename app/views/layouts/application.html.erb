@@ -10,19 +10,18 @@
 		
 		
 		<% if not current_user.nil? %>
-			#ifnotcurrent
-			#<div class="navi">
-		  	#<%= link_to 'breweries', breweries_path %>
-		  	<#%= link_to 'beers', beers_path %>
-		  	#<%= link_to 'ratings', ratings_path %>
-		  	#<%= link_to 'users', users_path %>
-		  	#|
-		  	#<%= link_to current_user.username, users_path/current_user.username %>
-			#</div>
+			ifnotcurrent
+			<div class="navi">
+		  	<%= link_to 'breweries', breweries_path %>
+		  	<%= link_to 'beers', beers_path %>
+		  	<%= link_to 'ratings', ratings_path %>
+		  	<%= link_to 'users', users_path %>
+		  	|
+			</div>
   	
 			<p><%= current_user.username %> signed in</p>
-			
-		
+		<% else %>
+			elseeeee
 		<% end %>
 
 		<%= yield %>
