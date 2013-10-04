@@ -14,7 +14,6 @@
 
 <%@user.ratings.each do |rating| %>
 	<%= link_to rating.name, rating %>
-	<%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
 
