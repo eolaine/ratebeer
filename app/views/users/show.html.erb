@@ -8,15 +8,20 @@
   <% if @user.ratings.empty? %>
 		has not yet rated anything!
 	<% else %>
-		has given <%=pluralize(@beer.ratings.count, 'rating')%>, average <%=@beer.average_rating%>.
+		has given <%=pluralize(@user.ratings.count, 'rating')%>, average <%=@user.average_rating%>.
 	<% end %>
 </p>
 
+
 <%@user.ratings.each do |rating| %>
-	<%= link_to rating.name, rating %>
-	<%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<li><%= link_to rating.beer.name, rating %> <%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %><li>
 <% end %>
 
+<% if current_user.id = @user.id %>
+	<%= link_to 'Edit', edit_user_path(@user) %>
+	<%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+	<%= link_to 'Back', users_path %>
+<% else %>
+	<%= link_to 'Back', users_path %>
+<% end %>	
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>-

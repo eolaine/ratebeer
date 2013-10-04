@@ -30,8 +30,8 @@
 		  	<%= link_to 'ratings', ratings_path %>
 		  	<%= link_to 'users', users_path %>
 		  	|
-		  	<%= link_to 'signin', users_path  %>
-		  	<%= link_to 'signup', ratings_path %>
+		  	<%= link_to 'signin', signin_path  %>
+		  	<%= link_to 'signup', signup_path %>
 			</div>
 		<% end %>
 
