@@ -13,12 +13,25 @@
 </p>
 
 
-<%@user.ratings.each do |rating| %>
-	<li><%= link_to rating.beer.name, rating %> <%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %><li>
-<% end %>
+<ul>
+  <% @user.ratings.each do |rating| %>
+    <li> 
+      <%= rating %> 
+      <% if currently_signed_in?(@user) %>
+          <%= link_to 'delete', rating, :method => :delete, :data => { :confirm => 'Are you sure?' } %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
+<p></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', users_path %>
+<% if @user == current_user %>
+	<%= link_to 'Edit', edit_user_path(@user) %>
+	<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+	<%= link_to 'Back', users_path %>
+<% else %>
+	<%= link_to 'Back', users_path %>
+<% end %>	
+
 

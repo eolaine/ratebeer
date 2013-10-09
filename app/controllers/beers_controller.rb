@@ -44,6 +44,8 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(params[:beer])
 		@beers = Beer.all
+    @breweries = Brewery.all
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
     respond_to do |format|
       if @beer.save
         format.html { redirect_to beers_path, notice: 'Beer was successfully created.' }
